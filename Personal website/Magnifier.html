@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		padding: 0;
+		margin:0;
+		background: #563;
+	}
+	div{
+		float: left;
+		width:400px;
+		height:360px;
+		position: relative;
+	}
+	#box1{
+		border:1px solid #ccc;
+	}
+	#box1 img{
+		width:100%;
+		height: 100%;
+	}
+	#box1 p{
+		position: absolute;
+		top:0;
+		left:0;
+		display: none;
+		width:100px;
+		height:100px;
+		background: #789;
+		opacity: 0.5;
+	}
+	#box2{
+		display: none;
+		margin-left:10px;
+		overflow: hidden;
+	}
+	#box2 img{
+		position: absolute;
+		top:0;
+		left:0;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox1=document.getElementById('box1');
+		var oBox2=document.getElementById('box2');
+		var oShadow=document.getElementById('shadow');
+		var oImg=document.getElementById('img1');
+		//显示shadow
+		oBox1.onmouseover=function(){
+			oBox2.style.display='block';
+			oShadow.style.display='block';
+		};
+		//隐藏shadow
+		oBox1.onmouseout=function(){
+			oShadow.style.display='none';
+			oBox2.style.display='none';
+		};
+		//shadow 跟着鼠标走
+		oBox1.onmousemove=function(ev){
+			var oEvent=ev || event;
+			var x=oEvent.clientX-oShadow.offsetWidth/2;
+			var y=oEvent.clientY-oShadow.offsetHeight/2;
+
+			if(x<0){
+				x=0;
+			}
+
+			if(x>=oBox1.offsetWidth-oShadow.offsetWidth){
+				x=oBox1.offsetWidth-oShadow.offsetWidth;
+			}
+
+			if(y<0){
+				y=0;
+			}
+
+			if(y>oBox1.offsetHeight-oShadow.offsetHeight){
+				y=oBox1.offsetHeight-oShadow.offsetHeight;
+			}
+
+			oShadow.style.left=x+'px';
+			oShadow.style.top=y+'px';
+			console.log(oEvent.clientX);
+			//求比例
+			var scaleX=x/(oBox1.offsetWidth-oShadow.offsetWidth);
+			var left=scaleX*(oImg.offsetWidth-oBox2.offsetWidth);
+
+			var scaleY=y/(oBox1.offsetHeight-oShadow.offsetHeight);
+			var top=scaleY*(oImg.offsetHeight-oBox2.offsetHeight);
+
+			oImg.style.left=-left+'px';
+			oImg.style.top=-top+'px';
+		};
+	};
+	</script>
+</head>
+<body>
+<div id="box1">
+	<img src="img/b21.jpg" alt="">
+	<p id="shadow"></p>
+</div>
+<div id="box2">
+	<img src="img/b21.jpg" alt="" id="img1">
+</div>
+</body>
+</html>

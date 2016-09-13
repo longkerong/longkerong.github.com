@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{ margin:0; padding:0; list-style:none;}
+		#div1{
+			height: 667px;
+			background: url(img/pg.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		#div2{
+			position: fixed;
+			left: 0px;
+			bottom: 230px;
+			width: 100%;
+			text-align:center;
+		}
+		img{
+			width: 47px;
+			height: 47px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('div2');
+		var aImg=document.getElementsByTagName('img');
+		document.onmousemove=function(ev){
+			var e=ev||event;
+			for (var i = 0; i < aImg.length; i++) {
+				var a=aImg[i].offsetLeft-e.clientX+aImg[i].offsetWidth/2;
+				var b=aImg[i].offsetTop+oDiv.offsetTop-e.clientY+aImg[i].offsetHeight/2;
+				var dis=Math.sqrt(a*a+b*b);
+				var scale=1-dis/250;
+				if(scale<0.5) scale=0.5;
+				aImg[i].style.width=scale*95+'px';
+				aImg[i].style.height=scale*95+'px';
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<img src="img2/1.png" alt="">
+			<img src="img2/2.png" alt="">
+			<img src="img2/3.png" alt="">
+			<img src="img2/4.png" alt="">
+			<img src="img2/5.png" alt="">
+		</div>
+	</div>
+</body>
+</html>

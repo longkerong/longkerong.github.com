@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/move.js"></script>
+	<style type="text/css">
+		body{
+			background: #479;
+		}
+		#div1{
+			position: relative;
+			background: url(img/pbdn.png);
+			background-size: 100% 100%;
+			width: 800px;
+			height: 500px;
+			margin: 30px auto;
+		}
+		#div2{
+			width: 664px;
+			height: 396px;
+			overflow: hidden;
+			margin-left: 67px;
+			margin-top: 52px;
+			background: #2a2a2a;
+			position: absolute;
+		}
+		ul{
+			position: absolute;
+			width: 3320px;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+		}
+		li{
+			width: 664px;
+			height: 396px;
+			float: left;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oUl=document.getElementById('ul1');
+		var aLi=oUl.children;
+		var oLiW=aLi[0].offsetWidth;
+		var x=0;
+		var y=0;
+		var iNow=0;
+		oUl.onmousedown=function(ev){
+			var downX=ev.clientX;
+			var disX=ev.clientX-x;
+			document.onmousemove=function(ev){
+				x=ev.clientX-disX;
+				move(oUl,{left:x},{duration:500})
+			};
+			document.onmouseup=function(ev){
+				document.onmousemove=document.onmouseup=null;
+				var upX=ev.clientX;
+				if(Math.abs(downX-upX)>100 ){
+					if(downX>upX){
+						iNow++;
+						if(iNow==aLi.length){iNow=aLi.length-1;}
+						
+					}else{
+						iNow--;
+						if (iNow==-1) {iNow=0;}
+					}
+				}
+				// alert(upX);
+				x=-oLiW*iNow;
+				move(oUl,{left:x})
+			}
+			return false;
+		}
+	}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<div id="div2">
+		<ul id="ul1">
+			<li><img src="img/bz1.jpg" alt=""></li>
+			<li><img src="img/bz2.jpg" alt=""></li>
+			<li><img src="img/bz3.jpg" alt=""></li>
+			<li><img src="img/bz4.jpg" alt=""></li>
+			<li><img src="img/bz5.jpg" alt=""></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

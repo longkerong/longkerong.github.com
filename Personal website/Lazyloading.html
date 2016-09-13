@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0; 
+		padding:0; 
+		list-style:none;}
+	body{
+		background:#273041;}
+	ul{
+		width:906px; 
+		margin:0 auto;}
+	li{
+		float:left; 
+		width:300px; 
+		height:300px; 
+		border:1px solid #000;}
+	img{
+		width:100%;
+		height: 100%;}
+	</style>
+	<script>
+	function getPos(obj){
+		var l=0;
+		var t=0;
+		while(obj){
+			l+=obj.offsetLeft;
+			t+=obj.offsetTop;
+
+			obj=obj.offsetParent;
+		}
+		return {left:l,top:t};
+	}
+	window.onscroll=window.onload=function(){
+		var aImg=document.getElementsByTagName('img');
+
+		for(var i=0; i<aImg.length; i++){
+			var t=getPos(aImg[i]).top;
+			var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+
+			var clientH=document.documentElement.clientHeight;
+			if(t<clientH+scrollTop){
+				aImg[i].src=aImg[i].getAttribute('_src');
+			}
+		}
+	};
+	</script>
+</head>
+<body>
+<ul>
+	<li><img _src="img/b1.jpg"></li>
+	<li><img _src="img/b2.jpg"></li>
+	<li><img _src="img/b3.jpg"></li>
+	<li><img _src="img/b4.jpg"></li>
+	<li><img _src="img/b5.jpg"></li>
+	<li><img _src="img/b6.jpg"></li>
+	<li><img _src="img/b7.jpg"></li>
+	<li><img _src="img/b8.jpg"></li>
+	<li><img _src="img/b9.jpg"></li>
+	<li><img _src="img/b10.jpg"></li>
+	<li><img _src="img/b11.jpg"></li>
+	<li><img _src="img/b12.jpg"></li>
+	<li><img _src="img/b13.jpg"></li>
+	<li><img _src="img/b14.jpg"></li>
+	<li><img _src="img/b15.jpg"></li>
+	<li><img _src="img/b16.jpg"></li>
+	<li><img _src="img/b17.jpg"></li>
+	<li><img _src="img/b18.jpg"></li>
+	<li><img _src="img/b19.jpg"></li>
+	<li><img _src="img/b20.jpg"></li>
+</ul>
+</body>
+</html>

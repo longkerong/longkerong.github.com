@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{background: #949;overflow: hidden;}
+</style>
+<script>
+	function d2a(n){
+		return n/180*Math.PI;
+	}
+	
+	function rnd(n,m){
+		return parseInt(Math.random()*(m-n)+n);
+	}
+	
+	window.onload=function(){
+		var oC=document.querySelector('#oc');
+		oC.width=document.documentElement.clientWidth;
+		oC.height=document.documentElement.clientHeight;
+		//获取画笔
+		var gd=oC.getContext('2d');
+		
+		var cx=700;
+		var cy=300;
+		
+		
+		setInterval(function(){
+			gd.clearRect(0,0,oC.width,oC.height);
+			
+			var oDate=new Date();
+		
+			var h=oDate.getHours();
+			var m=oDate.getMinutes();
+			var s=oDate.getSeconds();
+			
+			var str=h+':'+m+':'+s;
+			gd.font='20px a';
+			// gd.strokeStyle='#FFF'
+			gd.fillText(str,cx,cy);
+		
+			var oH=h%12*30;
+			var oM=m*6;
+			var oS=s*6;
+			var oMs=oDate.getMilliseconds();
+			
+			drawArc(80,oH+oM/360*30,'#000');
+			drawArc(60,oM+oS/360*6,'#309');
+			drawArc(100,oS+oMs/1000*6);
+			
+			
+			//写字
+			gd.strokeStyle='#FFF'
+			gd.lineWidth=1;
+			gd.font='40px 微软雅黑';
+			gd.textAlign='center';
+			gd.textBaseline='bottom';
+			gd.strokeText('圆弧时钟',cx,190);
+				
+		},16);	
+		
+		function drawArc(r,d,col){
+			d-=90;
+			gd.beginPath();
+			gd.lineWidth=10;
+			gd.strokeStyle=col||'red';
+			gd.arc(cx,cy,r,d2a(-90),d2a(d),false);
+			gd.stroke();
+		}
+		
+	};
+</script>
+</head>
+
+<body>
+	<canvas id="oc" width="800" height="600">抱歉，您的浏览器不兼容 请<a href="#">升级</a></canvas>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

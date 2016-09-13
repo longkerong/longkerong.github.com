@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background: #497;
+		}
+		#div1{
+			width: 700px;
+			height: 400px;
+			margin:50px auto; 
+		}
+		#div2{
+			position: relative;
+			text-align: center;
+			width: 800px;
+			height: 400px;
+			margin:50px auto; 
+			left: 335px;
+			top: -10px;
+			margin-left: -80px;
+		}
+		input{
+			width: 65px;
+			height: 30px;
+			margin-right: 10px;
+			
+		}
+		video{
+			width: 700px;
+			height: 400px;
+		}
+		meter{ 
+			left: 325px;
+			top: 450px;
+			width:700px; 
+			height:32px;
+			position: absolute;
+			z-index: 2;
+		}
+		/*#div8{ 
+			left: 325px;
+			top: 418px;
+			width:700px; 
+			height:32px;
+			background: #000;
+			z-index: 1;
+			position: absolute;
+		}*/
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv1=document.getElementById('div1');
+			var oDiv2=document.getElementById('div2');
+			var oDiv3=document.getElementById('div3');
+			var oDiv8=document.getElementById('div8');
+			var oV=document.getElementById('ov');
+			var aIpt=document.getElementsByTagName('input');
+			var meter=document.querySelector('meter');
+			// oDiv1.onmouseenter=function(){
+			// 	meter.style.display='block'
+			// };
+			// oDiv1.onmouseleave=function(){
+			// 	setTimeout(function(){
+			// 		meter.style.display='none';
+			// 	},500);
+			// };
+			
+			aIpt[0].onclick=function(){
+				oV.play();
+			};
+			aIpt[1].onclick=function(){
+				oV.pause();
+			};
+			aIpt[2].onclick=function(){
+				oV.currentTime++;
+			};
+			aIpt[3].onclick=function(){
+				oV.currentTime--;
+			};
+			aIpt[4].onclick=function(){
+				oV.volume+=0.1;
+			};
+			aIpt[5].onclick=function(){
+				oV.volume-=0.1;
+			};
+			var bTrue=true;
+			aIpt[6].onclick=function(){
+				if(bTrue){
+					oV.muted=true;
+					this.value='取消静音';
+				}else{
+					oV.muted=false;	
+					this.value='静音';
+				}
+				bTrue=!bTrue;
+			};
+			oV.ontimeupdate=function(){
+				var scale=oV.currentTime/oV.duration;
+				meter.value=scale*100;	
+			};
+			aIpt[7].onclick=function(){
+				oV.webkitRequestFullscreen();
+			};
+			var x=0;
+			meter.onmousedown=function(ev){
+				var disX=ev.clientX-x;
+				document.onmousemove=function(ev){
+					x=ev.clientX-disX;
+					meter.value=x/700*100;	
+					oV.currentTime=oV.duration*x/700;
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;	
+				};
+				return false;
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<video id="ov" src="vd/kzxd.mp4" controls></video>
+	</div>
+		<div id="div2">
+			<input type="button" value="播放">
+			<input type="button" value="暂停">
+			<input type="button" value="快进">
+			<input type="button" value="快退">
+			<input type="button" value="音量+">
+			<input type="button" value="音量-">
+			<input type="button" value="静音">
+			<input type="button" value="全屏">
+		</div>
+		<meter max="100" value="0"></meter>
+		<div id="div8"></div>
+</body>
+</html>

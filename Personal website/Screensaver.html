@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{ padding:0; margin:0;}
+	body{ overflow:hidden; background:#000;}
+	canvas{}
+</style>
+<script>
+	function rnd(n,m){
+		return parseInt(Math.random()*(m-n)+n);	
+	}
+	window.onload=function(){
+		var oC=document.querySelector('#oc');
+		
+		oC.width=document.documentElement.clientWidth;
+		oC.height=document.documentElement.clientHeight;
+		
+		//获取画笔
+		var gd=oC.getContext('2d');
+		
+		//点的个数
+		var aPl=4;
+		
+		//影子的个数
+		var LEN=150;
+		
+		
+		//点的大小
+		var w=1;
+		var h=1;
+		
+		//每个点的位置以及速度
+		var aPointarr=[]; 	/*
+			[
+				{
+					x:100,
+					y:100,
+					speedx:-3,
+					speedy:3
+				}
+			]
+		*/
+		
+		//影子的坐标
+		var fPoint=[];
+		/*
+			[
+				[
+					{
+						x:x,
+						x:y,
+					},
+					{
+						x:x,
+						x:y,
+					}
+				],
+				[
+					{
+						x:x,
+						x:y,
+					},
+					{
+						x:x,
+						x:y,
+					}
+				],
+			]
+		*/
+		
+		//设置第一条线颜色
+		gd.strokeStyle='#FFF';
+		
+		//生成每个点的坐标以及速度 并且 保存到 数组里
+		for(var i=0; i<aPl;i++){
+			var x=rnd(0,oC.width-w);
+			var y=rnd(0,oC.height-h);
+			var speedX=rnd(-5,6);
+			var speedY=rnd(-5,6);
+			aPointarr.push({x:x,y:y,speedx:speedX,speedy:speedY});	
+		}
+		
+		
+		
+		setInterval(function(){
+			//清除画布
+			gd.clearRect(0,0,oC.width,oC.height);
+			
+			//临时数组 - 保存每一条线的五个坐标点
+			var arr=[];
+			for(var i=0; i<aPl;i++){
+				//通过速度改变位置
+				aPointarr[i].x+=aPointarr[i].speedx;
+				aPointarr[i].y-=aPointarr[i].speedy;
+				
+				//判断位置知否超出画布并反射回去
+				if(aPointarr[i].x<0){
+					aPointarr[i].x=0;
+					aPointarr[i].speedx*=-1;
+				}
+				if(aPointarr[i].x>oC.width-w){
+					aPointarr[i].x=oC.width-w;
+					aPointarr[i].speedx*=-1;
+				}
+				if(aPointarr[i].y>oC.height-h){
+					aPointarr[i].y=oC.height-h
+					aPointarr[i].speedy*=-1;
+				}
+				if(aPointarr[i].y<0){
+					aPointarr[i].y=0;
+					aPointarr[i].speedy*=-1;
+				}
+				
+				//将每个点的坐标保存到临时数组
+				arr[i]={x:aPointarr[i].x,y:aPointarr[i].y}
+				
+				//画点
+				gd.fillRect(aPointarr[i].x,aPointarr[i].y,w,h);
+			}	
+		
+			
+			//画线
+			gd.beginPath();
+			gd.moveTo(aPointarr[0].x,aPointarr[0].y);
+			for(var i=1;i<aPointarr.length;i++){
+				gd.lineTo(aPointarr[i].x,aPointarr[i].y);
+			}
+			gd.closePath();
+			gd.stroke();
+			
+			//画影子
+			
+			//每运动一次就讲上一次的五个点坐标保存的数组push到大的数组之内
+			fPoint.push(arr);
+			
+			//判断大数组中是否达到100条
+			if(fPoint.length==LEN){
+				//删除大数组中的第一组坐标
+				fPoint.shift();
+			}
+			
+			//遍历大数组
+			for(var i=0; i<fPoint.length;i++){
+				gd.strokeStyle='rgba(255,255,255,'+i/fPoint.length+')';
+				gd.beginPath();
+				gd.moveTo(fPoint[i][0].x,fPoint[i][0].y)
+				for(var j=1;j<fPoint[i].length;j++){
+					gd.lineTo(fPoint[i][j].x,fPoint[i][j].y);
+				}
+				gd.closePath();
+				gd.stroke();
+			}
+		},10);
+	};
+</script>
+</head>
+
+<body>
+	<canvas id="oc" width="800" height="600">抱歉，您的浏览器不兼容 请<a href="#">升级</a></canvas>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

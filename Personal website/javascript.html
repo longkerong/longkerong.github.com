@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/move.js"></script>
+	<style type="text/css">
+		#jsworks{
+			overflow: hidden;
+			background: #867;
+			background-size: 100% 100%;
+			height: 667px;
+		}
+		#jstitle{
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+			font-size: 35px;
+			margin-top: 20px;
+		}
+		#ul1{
+			width: 900px;
+			height: 490px;
+			position: relative;
+			margin: 20px auto 30px;
+		}
+		#ul1 li{
+			position: relative;
+			float: left;
+			width:268px;
+			height: 150px;
+			margin-left: 24px;
+			margin-top:10px;
+			background-size: 100% 100%;
+			border:3px solid #ccc;
+			overflow: hidden;
+		}
+		#ul1 li a{
+			width: 268px;
+			height: 150px;
+			display: block;
+		}
+		#ul2{
+			width: 900px;
+			height: 490px;
+			position: relative;
+			margin: 20px auto 30px;
+			display: none;
+			/*overflow: hidden;*/
+		}
+		#ul2 li{
+			float: left;
+			width:268px;
+			height: 150px;
+			margin-left: 24px;
+			margin-top:10px;
+			background-size: 100% 100%;
+			border:3px solid #ccc;
+			overflow: hidden;
+		}
+		#ul2 li a{
+			width: 268px;
+			height: 150px;
+			display: block;
+		}
+		#ol1{
+			text-align: center;
+			margin: 0px auto;
+			width: 100px;
+		}
+		#ol1 li{
+			float: left;
+			margin: 1px auto;
+			text-align: center;
+			width: 40px;
+			height: 30px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 20px;
+			margin-right: 5px;
+			line-height: 30px;
+			background: #9ac9d3;
+			cursor: pointer;
+		}
+		span{
+			position: absolute;
+			width:268px;
+			height: 75px;
+			bottom: -76px;
+			text-align: center;
+			line-height: 75px;
+			color: #fff;
+			font-size: 30px;
+		}
+		i{
+			background: #000;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+			top: 0;
+			left: 0;
+		}
+		b{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementById('ol1').getElementsByTagName('li');
+			var oUl=document.getElementById('ul1');
+			var aLi=oUl.getElementsByTagName('li');
+			var oUl1=document.getElementById('ul2');
+			var aLi1=oUl1.getElementsByTagName('li');
+			var aSpan=oUl.getElementsByTagName('span')
+			var aPos=[];
+			var ready=true;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onmouseenter=function(){
+					var thispan=this.children[0].children[0];
+					move(thispan,{bottom:0});
+				}
+				aLi[i].onmouseleave=function(){
+					var thispan=this.children[0].children[0];
+					move(thispan,{bottom:-76});
+				}
+				aLi1[i].onmouseenter=function(){
+					var thispan=this.children[0].children[0];
+					move(thispan,{bottom:0});
+				}
+				aLi1[i].onmouseleave=function(){
+					var thispan=this.children[0].children[0];
+					move(thispan,{bottom:-76});
+				}
+			}
+			for (var j = 0; j < 9; j++) {
+				aLi[j].style.backgroundImage='url(img/js'+(j+1)+'.png)';
+				aLi1[j].style.backgroundImage='url(img/js'+(j+10)+'.png)';
+				aLi1[j].style.backgroundSize='100% 100%';
+			}
+			function change(yy){
+				for (var i = 0; i < yy.length; i++) {
+					aPos.push({
+						left:yy[i].offsetLeft,
+						top:yy[i].offsetTop,
+						width:268,
+						height:150,
+						opacity:1,
+						display:'block',
+					});
+					yy[i].style.left=aPos[i].left+'px';
+					yy[i].style.top=aPos[i].top+'px';
+				}
+				for (var i = 0; i < yy.length; i++) {
+					yy[i].style.position='absolute';
+					yy[i].style.margin=0;
+				}
+			}
+			change(aLi);
+			oBtn[0].onclick=function(){
+				var aPos=[];
+				change(aLi);
+				oUl1.style.display='none';
+				oUl.style.display='block';
+				down(aLi,oUl);
+			};
+			oBtn[1].onclick=function(){
+				var aPos=[];
+				change(aLi1);
+				oUl.style.display='none';
+				down(aLi1,oUl1);
+				oUl1.style.display='block';
+			};
+			function down(a,b){
+				var i=a.length-1;
+				var timer=setInterval(function(){
+					(function(index){
+move(a[i],{left:b.offsetWidth/2,top:b.offsetHeight,width:0,height:0,opacity:1},{complete:function(){
+							if (index==1) {
+								up(a);
+							}
+						},easing:'ease-in'})
+					})(i)
+					i--;
+					if(i==-1){
+						clearInterval(timer);	
+					}
+				},100)
+			}
+			function up(a){
+				var i=a.length-1;
+				var timer=setInterval(function(){
+					(function(index){
+						move(a[i],aPos[i],{complete:function(){
+							if (index==0) {
+								ready=true;
+							}
+						}})
+					})(i);
+					i--;
+					if(i==-1){
+						clearInterval(timer);	
+					}
+				},100);
+			}
+		};
+	</script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<div id="jsworks">
+	<div id="jstitle">JAVASCRIPT</div>
+	<ul id="ul1" class="clearfix">
+		<li><a href="Waterfallflow.html" target="_bank"><span><i></i><b>瀑布流</b></span></a></li>
+		<li><a href="Unlimitedmovement.html" target="_bank"><span><i></i><b>无限运动</b></span></a></li>
+		<li><a href="Suspendedadvertising.html" target="_bank"><span><i></i><b>悬浮广告</b></span></a></li>
+		<li><a href="Subtitletips.html" target="_bank"><span><i></i><b>文字提示器</b></span></a></li>
+		<li><a href="Slidingscreen.html" target="_bank"><span><i></i><b>图片查看</b></span></a></li>
+		<li><a href="Simpleclock.html" target="_bank"><span><i></i><b>超酷时钟</b></span></a></li>
+		<li><a href="Seamlessscroll.html" target="_bank"><span><i></i><b>无缝滚动</b></span></a></li>
+		<li><a href="Progressbar.html" target="_bank"><span><i></i><b>进度条</b></span></a></li>
+		<li><a href="Photowall.html" target="_bank"><span><i></i><b>照片墙</b></span></a></li>
+	</ul>
+	<ul id="ul2" class="clearfix">
+		<li><a href="path.html" target="_bank"><span><i></i><b>圆周运动</b></span></a></li>
+		<li><a href="Magnifier.html" target="_bank"><span><i></i><b>放大镜</b></span></a></li>
+		<li><a href="Lazyloading.html" target="_bank"><span><i></i><b>延时加载</b></span></a></li>
+		<li><a href="Jiugonggedrag.html" target="_bank"><span><i></i><b>九宫格拖拽</b></span></a></li>
+		<li><a href="Gravitysimulation.html" target="_bank"><span><i></i><b>重力运动</b></span></a></li>
+		<li><a href="Dragzoom.html" target="_bank"><span><i></i><b>拖拽放大</b></span></a></li>
+		<li><a href="Blockmotion.html" target="_bank"><span><i></i><b>分块运动</b></span></a></li>
+		<li><a href="appleMenu.html" target="_bank"><span><i></i><b>苹果菜单</b></span></a></li>
+		<li><a href="ajax&&jsonp.html" target="_bank"><span><i></i><b>AJAX&JSONP</b></span></a></li>
+	</ul>
+	<ol id="ol1" class="clearfix">
+		<li>1</li>
+		<li>2</li>
+	</ol>
+</div>
+</body>
+</html>

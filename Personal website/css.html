@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.cssht{
+			overflow: hidden;
+			height: 666px;
+			background: #0e6085;
+			background-size: 100% 100%;
+		}
+		.csstitile{
+			margin:60px auto;
+			text-align: center;
+			font-size: 30px;
+			font-weight: bold;
+			color:#fff;
+			text-shadow:1px 3px 1px #000;
+		}
+		.list{
+			position: relative;
+			width: 500px;
+			height:300px;
+			margin: 45px auto;
+			transform-style: preserve-3d;
+		}
+		li a{
+			width: 470px;
+			height:280px;
+			display: block;
+		}
+		li{
+			position: absolute;
+			box-shadow: 0px 0px 9px #fff,0px 0px 18px #fff,0px 0px 28px #fff;
+			-webkit-box-reflect:below 0 -webkit-linear-gradient(rgba(0,0,0,0) 80%, rgba(0, 0 ,0 ,1)) ;
+		}
+		.button{
+			float: left;
+			width: 70px;
+			height: 40px;
+			margin-left: 48px;
+			line-height: 45px;
+			font-size:20px;
+			color: #fff;
+			background:#69bee6;
+			border-radius: 3px;
+			cursor: pointer;
+			box-shadow:0 6px 4px #000;
+			transition: 0.1s;
+		}
+		.button:active{
+			box-shadow:0 0px 0px #000;
+			margin-top:7px;
+		}
+		.aiqy{
+			transform:perspective(800px) translateX(-630px) rotateY(45deg);
+			opacity: 0;
+		}
+		.youk{
+			transform:perspective(800px) translateX(-315px) rotateY(45deg);
+		}
+		.xiaomi{
+			z-index: 1;
+		}
+		.meilis{
+			transform:perspective(800px) translateX(315px) rotateY(-45deg);
+		}
+		.linghhx{
+			transform:perspective(800px) translateX(630px) rotateY(-45deg);
+			opacity: 0;
+		}
+		.fanye{
+			text-align: center;
+			margin: -15px auto 0px;
+			margin-left: 40%;
+			height: 50px;
+		}
+		img{
+			width: 470px;
+			height: 280px;
+		}
+	</style>
+	<link rel="stylesheet" href="css/common.css">
+	<script type="text/javascript">
+	window.onload=function(){
+		var aLi=document.querySelectorAll('li');
+		var aBtn=document.querySelectorAll('input');
+		var arrList=[];
+		for (var i = 0; i < aLi.length; i++) {
+			arrList[i]=aLi[i].className;
+		}
+		var redeay=true;
+		aBtn[0].onclick=function(){
+			if (!redeay) {return;}
+			redeay=false;
+			arrList.unshift(arrList.pop());
+			for(var i=0; i<aLi.length;i++){
+				aLi[i].style.transition='1s';
+				aLi[i].className=arrList[i];
+			}
+		};
+		aBtn[1].onclick=function(){
+			if (!redeay) {return;}
+			redeay=false;
+			arrList.push(arrList.shift());
+			for(var i=0; i<aLi.length;i++){
+				aLi[i].style.transition='1s';
+				aLi[i].className=arrList[i];
+			}
+		};
+		aLi[0].addEventListener('transitionend',function(){
+			redeay=true;
+		},false)
+	};
+	</script>
+</head>
+<body>
+<div class="cssht">
+	<div class="csstitile">CSS&HTML作品</div>
+	<div class="fanye clearfix">
+		<input class="button" type="button" value="上一页">
+		<input class="button" type="button" value="下一页">
+	</div>
+	<ul class="list">
+		<li class="aiqy"><a href="龙克才css/爱奇艺/index.html"><img src="img/css1.png" alt=""></a></li>
+		<li class="youk"><a href="龙克才css/优酷/index.html"><img src="img/css5.png" alt=""></a></li>
+		<li class="xiaomi"><a href="龙克才css/小米官网/index.html"><img src="img/css4.png" alt=""></a></li>
+		<li class="meilis"><a href="龙克才css/美丽说/index.html"><img src="img/css3.png" alt=""></a></li>
+		<li class="linghhx"><a href="龙克才css/灵魂回响/index.html"><img src="img/css2.png" alt=""></a></li>
+	</ul>
+</div>
+</body>
+</html>

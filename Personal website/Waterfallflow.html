@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<style type="text/css">
+		body{
+			background: #888;
+		}
+		div{
+			overflow: hidden;
+			width: 1200px;
+			margin: auto;
+		}
+		ul{
+			width: 300px;
+			float: left;
+		}
+		li{
+			width: 300px;
+			background: red;
+			border:1px solid #000;
+		}
+	</style>
+	<script type="text/javascript">
+	function rnd(n,m){
+		return parseInt(Math.random()*(m-n)+n);
+	}
+	window.onscroll=window.onload=function(){
+		var aUl=document.getElementsByTagName('ul');
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var clienTh=document.documentElement.clientHeight;
+		var h=document.getElementById('div1').offsetHeight;
+		if (clienTh+scrollTop>=h-400) {
+			for (var i = 0; i <20; i++) {
+				var oLi=document.createElement('li');
+				oLi.style.height=rnd(100,500)+'px';
+				oLi.style.background='rgb('+rnd(1,255)+','+rnd(1,255)+','+rnd(1,255)+')';
+				var arr=[];
+				for (var j = 0; j < aUl.length; j++) {
+					arr.push(aUl[j]);
+				}
+				arr.sort(function(n1,n2){
+					return n1.offsetHeight-n2.offsetHeight;
+				});
+				arr[0].appendChild(oLi);
+			}
+		}
+	};
+
+	</script>
+</head>
+<body>
+<div id="div1">
+	<ul></ul>
+	<ul></ul>
+	<ul></ul>
+	<ul></ul>
+</div>
+</body>
+</html>

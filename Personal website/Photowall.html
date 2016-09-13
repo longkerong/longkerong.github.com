@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+*{ 
+	margin:0;
+	padding:0; 
+	list-style:none;
+	background: #346;
+}
+#ul1{
+	width:534px;
+	height: 600px;
+	margin:30px auto; 
+	position:relative;
+}
+#ul1 li{
+	width:128px;
+	height:128px; 
+	float:left; 
+	border:5px solid #000;
+	margin:15px; 
+	background:#fff;
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+input{
+	width: 100px;
+	height: 50px;
+	margin:30px auto;
+	background: #fff;
+	display: block;
+	font-size: 30px;
+	margin-left: 610px;
+	border-radius: 5px;
+}
+</style>
+<script src="js/move.js"></script>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.children;
+	var zIndex=2;
+	//0.布局转换
+	var aPos=[];
+	for(var i=0;i<aLi.length;i++){
+		aPos.push({left:aLi[i].offsetLeft,top:aLi[i].offsetTop});
+		aLi[i].style.left=aPos[i].left+'px';
+		aLi[i].style.top=aPos[i].top+'px';	
+	}
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.position='absolute';	
+		aLi[i].style.margin=0;
+		aLi[i].index=i;//交换时要用
+	}
+	console.log(aPos[0]);
+	//1.添加拖拽
+	for(var i=0;i<aLi.length;i++){
+		drag(aLi[i]);	
+	}
+	function drag(obj){
+		obj.onmousedown=function(ev){
+			clearInterval(obj.timer);
+			obj.style.zIndex=zIndex++;
+			var e=ev||event;
+			var disX=e.clientX-obj.offsetLeft;
+			var disY=e.clientY-obj.offsetTop;
+			document.onmousemove=function(ev){
+				var e=ev||event;	
+				obj.style.left=e.clientX-disX+'px';
+				obj.style.top=e.clientY-disY+'px';
+				
+				//2.飘红撞到&&最近的
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.borderColor='#000';	
+				}
+				
+				var nearObj=findNearest(obj);
+				if(nearObj){
+					nearObj.style.borderColor='red';
+				}
+			};	
+			document.onmouseup=function(){
+				document.onmousemove=document.onmouseup=null;	
+				//交换位置,索引
+				var nearObj=findNearest(obj);
+				if(nearObj){
+					move(obj,aPos[nearObj.index]);
+					move(nearObj,aPos[obj.index]);
+					var tmp=nearObj.index
+					nearObj.index=obj.index;
+					obj.index=tmp;
+					
+					nearObj.style.borderColor='#000';
+				}else{
+					move(obj,aPos[obj.index],{duration:1000});
+				}
+				
+				
+			};
+			return false;
+		};	
+		
+	}
+	
+	function findNearest(obj){
+		var minNum=9999999;
+		var minNumIndex=-1;
+		for(var i=0;i<aLi.length;i++){
+			if(obj==aLi[i]) continue;
+			if(collTest(obj,aLi[i])){
+				//撞到了
+				var minDis=getDis(obj,aLi[i]);//求距离
+				if(minDis<minNum){
+					minNum=minDis;
+					minNumIndex=i;
+				}
+			}
+		}
+		if(minNumIndex==-1){
+			return null;
+		}else{
+			return aLi[minNumIndex];
+		}
+		
+	}
+	
+	function getDis(obj1,obj2){
+		var a=obj2.offsetLeft-obj1.offsetLeft;
+		var b=obj2.offsetTop-obj1.offsetTop;
+		return Math.sqrt(a*a+b*b);
+	}
+	function collTest(obj1,obj2){
+		var l1=obj1.offsetLeft;
+		var t1=obj1.offsetTop;
+		var r1=obj1.offsetLeft+obj1.offsetWidth;
+		var b1=obj1.offsetTop+obj1.offsetHeight;
+		
+		var l2=obj2.offsetLeft;
+		var t2=obj2.offsetTop;
+		var r2=obj2.offsetLeft+obj2.offsetWidth;
+		var b2=obj2.offsetTop+obj2.offsetHeight;
+		
+		if(l1>r2||t1>b2||r1<l2||b1<t2){
+			return false;
+		}else{
+			return true;	
+		}
+	}
+	var oBtn=document.getElementById('t1');
+	oBtn.onclick=function(){
+		aPos.sort(function(){
+			return Math.random()-0.5;
+		});
+		for(var i=0;i<aLi.length;i++){
+			move(aLi[i],aPos[i]);
+			aLi[i].index = i;
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+
+<input type="button" id="t1" value="切换">
+<ul id="ul1">
+	<li><img src="img/mao1.jpg"></li>
+	<li><img src="img/mao2.jpg"></li>
+	<li><img src="img/mao3.jpg"></li>
+	<li><img src="img/mao4.jpg"></li>
+	<li><img src="img/mao5.jpg"></li>
+	<li><img src="img/mao6.jpg"></li>
+	<li><img src="img/mao7.jpg"></li>
+	<li><img src="img/mao8.jpg"></li>
+	<li><img src="img/mao9.jpg"></li>
+</ul>
+
+
+</body>
+</html>

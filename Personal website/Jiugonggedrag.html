@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background: #937
+		}
+		#drag{
+			width: 500px;
+			height: 300px;
+			background: #ccc;
+			position: absolute;
+			top: 100px;
+			left: 380px;
+		}
+		.t{
+			width: 100%;
+			height: 10px;
+			background: green;
+			position: absolute;
+			top: 0px;
+		}
+		.r{
+			width: 10px;
+			height: 100%;
+			background: green;
+			position: absolute;
+			right: 0px;
+		}
+		.b{
+			width: 100%;
+			height: 10px;
+			background: green;
+			position: absolute;
+			bottom: 0px;
+		}
+		.l{
+			width: 10px;
+			height: 100%;
+			background: green;
+			position: absolute;
+			left: 0px;
+		}
+		.lt{
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			background: red;
+			top: 0px;
+			left: 0x;
+		}
+		.rt{
+			width: 10px;
+			height: 10px;
+			background: red;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+		.rb{
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			background: red;
+			bottom: 0px;
+			right: 0px;
+		}
+		.lb{
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			background: red;
+			bottom: 0px;
+			left: 0px;
+		}
+		.head{
+			width: 100%;
+			height: 10px;
+			background: blue;
+			position: absolute;
+			top: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	function drag(obj){
+		obj.onmousedown=function(ev){
+			var e=ev||event;
+
+			var oldX=e.clientX;
+			var oldY=e.clientY;
+
+			var oldW=obj.parentNode.offsetWidth;
+			var oldH=obj.parentNode.offsetHeight;
+
+			var oldL=obj.parentNode.offsetLeft;
+			var oldT=obj.parentNode.offsetTop;
+
+			var disX=e.clientX-obj.parentNode.offsetLeft;
+
+			document.onmousemove=function(ev){
+				var e=ev||event;
+				var newX=e.clientX;
+				var newY=e.clientY;
+				if (obj.className.indexOf('r')!=-1) {
+					var W=oldW+(newX-oldX);
+					if(W<100){
+						obj.parentNode.style.width='100px';	
+					}
+					else{
+						obj.parentNode.style.width=W+'px';
+					}
+				}
+				if (obj.className.indexOf('b')!=-1) {
+					var H=oldH+(newY-oldY);
+					if (H<100) {
+						obj.parentNode.style.height='100px';
+					} 
+					else {
+						obj.parentNode.style.height=H+'px';
+					}
+				}
+				if (obj.className.indexOf('l')!=-1) {
+					var W=oldW+(oldX-newX);
+					if (W<100) {
+						return;
+					} 
+					obj.parentNode.style.left=oldL-(oldX-newX)+'px';
+					obj.parentNode.style.width=W+'px';
+				}
+				if (obj.className.indexOf('t')!=-1) {
+					var H=oldH+(oldY-newY);
+					if (H<100) {
+						return;
+					} 
+					obj.parentNode.style.height=H+'px';
+					obj.parentNode.style.top=oldT-(oldY-newY)+'px';
+				}
+				if (obj.className.indexOf('head')!=-1) {
+					obj.parentNode.style.left=newX-disX+'px';
+					obj.parentNode.style.top=oldT-(oldY-newY)+'px';
+				}
+			};
+			document.onmouseup=function(){
+				document.onmouseup=document.onmousemove=null;
+			};
+			return false;
+		};
+	}
+	window.onload=function(){
+		var oDra=document.getElementById('drag');
+		var aBox=oDra.children;
+		for (var i = 0; i < aBox.length; i++) {
+			drag(aBox[i]);
+		}
+	};
+	</script>
+</head>
+<body>
+	<div id="drag">
+		<div class="head"></div>
+		<div class="t"></div>
+		<div class="r"></div>
+		<div class="b"></div>
+		<div class="l"></div>
+		<div class="lt"></div>
+		<div class="rt"></div>
+		<div class="rb"></div>
+		<div class="lb"></div>
+	</div>
+</body>
+</html>

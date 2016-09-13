@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/move.js"></script>
+	<style type="text/css">
+		body{
+			background: #ebebeb;
+			width: 100%;
+		}
+		#div1{
+			width: 700px;
+			height: 400px;
+			margin:60px auto;
+			background: url(img1/1.png) no-repeat;
+			box-shadow: 0 0 9px #000;
+		}
+		#div1 div{
+			float: left;
+			background: url(img1/0.png) no-repeat;
+		}
+		#div2{
+			text-align: center;
+			height: 100px;
+			width: 530px;
+			overflow: hidden;
+			margin: 0px auto;
+			/*margin-left: 420px;*/
+		}
+		input{
+			font-size: 18px;
+			float: left;
+			margin-top: 3px;
+			margin-right: 5px;
+			overflow: hidden;
+			width: 100px;
+			height: 40px;
+			border-radius: 3px;
+			cursor: pointer;
+			font-weight: bold;
+			transition: 0.1s;
+			color: #fff;
+			box-shadow: 0px 3px 0px #000;
+		}
+		input:active{
+			margin-top: 5px;
+			box-shadow: 0px 0px 0px #000;
+		}
+		#button1{
+			background: #783b81;
+		}
+		#button2{
+			background: #f95e28;
+		}
+		#button3{
+			background: #29d5dc;
+		}
+		#button4{
+			background: #81d343;
+		}
+		#button5{
+			background: #f69;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			var oBtn=document.getElementsByTagName('input');
+			var now=0;
+			function cr(col,row){
+				for (var r = 0; r < row; r++) {
+					for (var c = 0; c < col; c++) {
+						var oBox=document.createElement('div');
+						oBox.style.width=oDiv.offsetWidth/col+'px';
+						oBox.style.height=oDiv.offsetHeight/row+'px';
+						oDiv.appendChild(oBox);
+						oBox.style.backgroundPosition=-oBox.offsetWidth*c+'px '+ -oBox.offsetHeight*r +'px';
+						oBox.style.backgroundImage='url(img1/'+now%5+'.png)';
+						oBox.r=r;
+						oBox.c=c;
+					}
+				}
+			}
+			cr(7,4);
+			var aBox=oDiv.children;
+			var ready=true;
+			oBtn[0].onclick=function(){
+				if (!ready) {return;}
+				ready=false;
+				oDiv.innerHTML='';
+				cr(7,4)
+				change(50);
+			};
+			oBtn[1].onclick=function(){
+				if (!ready) {return;}
+				ready=false;
+				oDiv.innerHTML='';
+				cr(100,1)
+				change(10);
+			};
+			oBtn[2].onclick=function(){
+				if (!ready) {return;}
+				ready=false;
+				oDiv.innerHTML='';
+				cr(1,100)
+				change(10);
+			};
+			oBtn[3].onclick=function(){
+				if (!ready) {return;}
+				ready=false;
+				oDiv.innerHTML='';
+				cr(7,4);
+				change1();
+			};
+			oBtn[4].onclick=function(){
+				if (!ready) {return;}
+				ready=false;
+				oDiv.innerHTML='';
+				cr(7,4);
+				change2();
+			};
+			function change(t){
+				var i=0;
+				var timer=setInterval(function(t){
+					(function(index){
+						move(aBox[i],{opacity:0},{duration:800,complete:function(){
+							if (index==aBox.length-1) {
+								now++;
+								for (var i = 0; i < aBox.length; i++) {
+									aBox[i].style.backgroundImage='url(img1/'+now%5+'.png)';
+									aBox[i].style.opacity=1;
+								}
+								oDiv.style.backgroundImage='url(img1/'+(now+1)%5+'.png)';
+								ready=true;
+							}
+						}});
+					})(i)
+					i++;
+					if(i==aBox.length){
+						clearInterval(timer);	
+					}
+				},t)
+			};
+			function change1(){
+				for(var i=0;i<aBox.length;i++){
+					(function(index){
+						setTimeout(function(){
+							move(aBox[index],{opacity:0},{duration:800,complete:function(){
+								if(index==aBox.length-1){
+									now++;
+									now%=5;
+									for(var i=0;i<aBox.length;i++){
+										aBox[i].style.backgroundImage='url(img1/'+now+'.png)';
+										aBox[i].style.opacity=1;
+									}
+									oDiv.style.backgroundImage='url(img1/'+(now+1)%5+'.png)';
+									ready=true;
+								}
+							}})
+						},(aBox[i].c+aBox[i].r)*100);
+					})(i);
+				}
+			};
+			function change2(){
+				for(var i=0;i<aBox.length;i++){
+					(function(index){
+						setTimeout(function(){
+							move(aBox[index],{opacity:0},{duration:800})
+						},Math.random()*500);
+					})(i);
+				}
+				setTimeout(function(){
+					now++;
+					now%=5;
+					for(var i=0;i<aBox.length;i++){
+						aBox[i].style.backgroundImage='url(img1/'+now+'.png)';
+						aBox[i].style.opacity=1;
+					}
+					oDiv.style.backgroundImage='url(img1/'+(now+1)%5+'.png)';
+					ready=true;
+				},500+800+100);
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="div1" class="clearfix">
+	</div>
+	<div id="div2">
+		<input type="button" id="button1" value="普通分块">
+		<input type="button" id="button2" value="横向分块">
+		<input type="button" id="button3" value="纵向分块">
+		<input type="button" id="button4" value="斜向分块">
+		<input type="button" id="button5" value="随机分块">
+	</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style type="text/css">
+		body{
+			background: black;
+			height: 720px;
+			overflow: hidden;
+		}
+		ul{
+			position: relative;
+			width: 133px;
+			height: 200px;
+			margin: 180px auto;
+			transform-style: preserve-3d;
+			transform: perspective(800px) rotateX(-30deg);
+		}
+		li{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			box-shadow: 0 0 10px #fff,0 0 20px #fff;
+			-webkit-box-reflect:below 10px -webkit-linear-gradient(rgba(0,0,0,0) 60%,rgba(0,0,0,0.5));
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.querySelector('#ul1');
+			var N=11;
+			for (var i = 0; i < 11; i++) {
+				var oLi=document.createElement('li');
+				oLi.style.background='url(img/fap'+(i+1)+'.png)';
+				oLi.style.backgroundSize='100% 100%';
+				oUl.appendChild(oLi);
+				oLi.style.transition='0.3s all ease '+(N-i)*120+'ms';
+				(function(obj,index){
+					setTimeout(function(){
+						obj.style.transform='rotateY('+(index*360/N)+'deg) translateZ(320px)';
+					},0)
+				})(oLi,i);
+			}
+			aLi=oUl.children;
+			var x=0;
+			var y=0;
+			var speedX=0;
+			var speedY=0;
+			var lastX=0;
+			var lastY=0;
+			document.onmousedown=function(ev){
+				var disX=ev.clientX-x;
+				var disY=ev.clientY-y;
+				document.onmousemove=function(ev){
+					x=ev.clientX-disX;
+					y=ev.clientY-disY;
+					change(x/3,y/3);
+					speedX=ev.clientX-lastX;
+					speedY=ev.clientY-lastY;
+					lastX=ev.clientX;
+					lastY=ev.clientY;
+				};
+				document.onmouseup=function(){
+					document.onmouseup=document.onmousemove=null;
+					clearInterval(timer);
+					var timer=setInterval(function(){
+						speedX*=0.95;
+						speedY*=0.95;
+						x+=speedX;
+						y+=speedY;
+						change(x/3,y/3);
+						if(Math.abs(speedX)<=0.1 && Math.abs(speedY)<=0.1){
+							clearInterval(timer);
+						}
+					},30)
+				};
+				return false;
+			};
+			function change(x,y){
+				oUl.style.transform='perspective(800px) rotateX('+(-y-30)+'deg) rotateY('+x+'deg) ';
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+	</ul>
+</body>
+</html>

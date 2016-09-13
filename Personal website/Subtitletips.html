@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			background: #000;
+		}
+		span{
+			float:left; 
+			font-size:35px; 
+			font-weight:bold; 
+			color:#fff; 
+			opacity:0;
+		}
+	</style>
+	<script src="js/move.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		var str='当前,世界经济走势低迷,中国经济处于“三期叠加”期,传统的要素驱动模式难以持续,人口红利正在消失,亟待形成新的增长动能.互联网引发了工业革命以来影响最为深远的技术革命,催生了新技术、新产品、新模式和新产业,重构了新的经济增长模式,其对经济增长的贡献将超过以往的技术变革.互联网经济仿佛一块“新大陆”,正吸纳并改造着“旧大陆”的种种生产要素,塑造出日新月异的经济版图和商业生态.更重要的是,与主要依靠不断追加要素投入而实现增长的传统模式不同,互联网经济体拥有巨大的网络效应和协同效应,能在相当一段时间内避免传统经济增长模式固有的边际报酬递减困境.'
+		for (var i = 0; i < str.length; i++) {
+			var oSpan=document.createElement('span');
+			oSpan.innerHTML=str[i];
+			document.body.appendChild(oSpan);
+		}
+		var aSpan=document.body.children;
+		var i=0;
+		var timer=setInterval(function(){
+			move(aSpan[i],{opacity:1})
+			i++;
+		},100)
+	};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

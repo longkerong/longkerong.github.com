@@ -1,0 +1,268 @@
+body {
+  background: #f5f5f5;
+}
+body .content {
+  margin: 0px auto;
+  max-width: 640px;
+  min-width: 320px;
+}
+body .content .head {
+  position: relative;
+  width: 100%;
+}
+body .content .head .logo {
+  position: absolute;
+  left: 4px;
+  top: 6px;
+}
+body .content .head .logo a {
+  display: block;
+  width: 29px;
+  height: 19px;
+  background: url(../img/1.png) no-repeat;
+}
+body .content .head .fenlei {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+}
+body .content .head .fenlei a {
+  display: block;
+  width: 24px;
+  height: 29px;
+  background: url(../img/2.png) no-repeat;
+}
+body .content .head .soso {
+  position: relative;
+  padding: 0px 40px;
+  box-sizing: border-box;
+}
+body .content .head .soso input {
+  width: 100%;
+  height: 30px;
+  background: #ebebeb;
+}
+body .content .head .soso i {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  background: url(../img/3.png) no-repeat;
+  top: 7px;
+  right: 45px;
+}
+body .content .banner {
+  background: #fff;
+  width: 100%;
+  overflow: hidden;
+}
+body .content .banner .banner_top {
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+body .content .banner .banner_top img {
+  width: 100%;
+}
+body .content .banner .banner_bot {
+  margin-top: 13px;
+  width: 100%;
+}
+body .content .banner .banner_bot li {
+  width: 25%;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  background: url(../img/bg.png) no-repeat 0% 50%;
+  padding-bottom: 11px;
+}
+body .content .banner .banner_bot li.cbg:first-child {
+  background: none;
+}
+body .content .banner .banner_bot li a.car {
+  padding-top: 25px;
+  display: block;
+  background: url(../img/5.png) no-repeat 50% 0px;
+}
+body .content .banner .banner_bot li a.money {
+  padding-top: 25px;
+  display: block;
+  background: url(../img/6.png) no-repeat 50% 0px;
+}
+body .content .banner .banner_bot li a.feiji {
+  padding-top: 25px;
+  display: block;
+  background: url(../img/7.png) no-repeat 50% 0px;
+}
+body .content .banner .banner_bot li a.wode {
+  padding-top: 25px;
+  display: block;
+  background: url(../img/8.png) no-repeat 50% 0px;
+}
+body .content .time {
+  background: #fff;
+  margin-top: 11px;
+}
+body .content .time .time_bt {
+  height: 32px;
+  line-height: 32px;
+  background: url(../img/bg1.png) no-repeat 7px 9px;
+  border-bottom: 1px solid #dadada;
+}
+body .content .time .time_bt h3 {
+  padding-left: 18px;
+  color: #7f7f7f;
+  font-size: 13px;
+}
+body .content .time .time_bt div {
+  margin-top: 8px;
+  margin-left: 8px;
+}
+body .content .time .time_bt div span {
+  float: left;
+  margin-right: 3px;
+}
+body .content .time .time_bt div span.num {
+  width: 15px;
+  height: 15px;
+  background: #5d5d5d;
+  color: #fff;
+  line-height: 15px;
+  text-align: center;
+}
+body .content .time .time_bt div span.maoh {
+  margin-top: 5px;
+  width: 2px;
+  height: 9px;
+  background: url(../img/doc.png) no-repeat 0 bottom;
+}
+body .content .time .time_tp li {
+  float: left;
+  width: 33.33%;
+  border-left: 1px solid #dadada;
+  box-sizing: border-box;
+}
+body .content .time .time_tp li.cbg {
+  border-left-color: #fff;
+}
+body .content .time .time_tp li a {
+  display: block;
+}
+body .content .time .time_tp li a img {
+  width: 100%;
+}
+body .content .time .time_tp li i {
+  display: block;
+  color: #d8505c;
+  font-size: 12px;
+  text-align: center;
+}
+body .content .time .time_tp li b {
+  margin: 0px auto;
+  margin-top: 10px;
+  margin-bottom: 9px;
+  display: block;
+  color: #fff;
+  width: 58%;
+  height: 15px;
+  text-align: center;
+  background: #d8505c;
+}
+body .content .mdl {
+  margin-top: 12px;
+  background: #fff;
+}
+body .content .mdl .mdl_bt {
+  height: 37px;
+  line-height: 37px;
+  background: url(../img/bg1.png) no-repeat 7px 13px;
+}
+body .content .mdl .mdl_bt h3 {
+  padding-left: 18px;
+  color: #7f7f7f;
+  font-size: 13px;
+}
+body .content .mdl .mdl_tp li {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 7px;
+}
+body .content .mdl .mdl_tp li img {
+  width: 100%;
+}
+body .content .czg {
+  margin-top: 12px;
+  background: #fff;
+}
+body .content .czg .czg_bt {
+  height: 32px;
+  line-height: 32px;
+  background: url(../img/bg1.png) no-repeat 7px 9px;
+}
+body .content .czg .czg_bt h3 {
+  padding-left: 18px;
+  color: #7f7f7f;
+  font-size: 13px;
+}
+body .content .czg .czg_tp.ooo {
+  margin: 0 auto;
+}
+body .content .czg .czg_tp li {
+  float: left;
+  width: 50%;
+  border-right: 1px solid #dadada;
+  box-sizing: border-box;
+}
+body .content .czg .czg_tp li img {
+  width: 100%;
+}
+body .content .czg .czg_tp li.cbg {
+  border-right-color: #fff;
+}
+body .content .czg .czg_tp li.cbg1 {
+  border-right-color: #fff;
+}
+body .content .czg .czg_tp li.cbg3 {
+  border: 8px solid #fff;
+  margin-top: -8px;
+  border-right: 4px solid #fff;
+}
+body .content .czg .czg_tp li.cbg4 {
+  border-right: 8px solid #fff;
+  border-left: 4px solid #fff;
+}
+body .content .foot {
+  height: 105px;
+  background: #fff;
+  margin-top: 10px;
+}
+body .content .foot .foot_bt {
+  height: 33px;
+  line-height: 33px;
+  border-bottom: 1px solid #f5f5f5;
+}
+body .content .foot .foot_bt a,
+body .content .foot .foot_bt span {
+  color: #666;
+  font-size: 15px;
+}
+body .content .foot .bb {
+  width: 35%;
+  margin: 0px auto;
+}
+body .content .foot .bb a {
+  float: left;
+  width: 33.3%;
+  margin-top: 15px;
+  text-align: center;
+}
+body .content .foot .bb a.active {
+  color: #e6242b;
+}
+body .content .foot .cc {
+  text-align: center;
+  margin-top: 8px;
+}
+body .content .foot .dd {
+  text-align: center;
+  margin-top: 11px;
+}

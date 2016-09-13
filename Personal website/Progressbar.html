@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		background:#273041;
+	}
+	#box{
+		width:500px;
+		height:40px;
+		border:1px solid #000;
+		margin:100px auto;
+		background: #ccc;
+	}
+	#bar{
+		height:100%;
+		width:0px;
+		background: red;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBar=document.getElementById('bar');
+
+		var n=77;
+		var w=0;
+
+		for(var i=0; i<n; i++){
+			var oImg=new Image();
+			oImg.onload=function(){
+				w++;
+				oBar.style.width=w*500/77+'px';
+			};
+			oImg.src='http://www.zhinengshe.com/works/3525/img/'+i+'.jpg';
+		}
+	};
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="bar"></div>
+	</div>
+</body>
+</html>

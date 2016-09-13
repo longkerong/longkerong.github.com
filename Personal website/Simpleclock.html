@@ -1,0 +1,109 @@
+
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超酷数码钟表 - 智能社 - www.zhinengshe.com</title>
+<style type="text/css">
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background:#003; }
+img { border: none; }
+
+.date { width: 520px; height: 520px; margin: 50px auto 0; position: relative; }
+.date h2 { text-align: center; padding: 80px 0 30px; }
+.year { text-align: center; padding-top: 30px; }
+.time { text-align: center; padding: 30px 0; }
+.url { text-align: center; position: absolute; bottom: 40px; left: 160px; }
+.date img { position: relative; }
+.pos2 { margin-left: 10px; }
+.num { width: 25px; }
+.num2 { width: 38px; }
+</style>
+<script type="text/javascript">
+function todou(n){
+    return n<10?'0'+n:''+n;
+};
+window.onload=function(){
+    var aImg1=document.getElementById('year').getElementsByTagName('img');
+    var aImg2=document.getElementById('time').getElementsByTagName('img');
+    function clock(){
+        var oDate=new Date();
+        var y=oDate.getFullYear();
+        var moth=oDate.getMonth();
+        var d=oDate.getDate();
+        var h=oDate.getHours();
+        var m=oDate.getMinutes();
+        var s=oDate.getSeconds();
+        var w=oDate.getDay();
+        var arr=[
+            'seven.png',
+            'one.png',
+            'two.png',
+            'three.png',
+            'four.png',
+            'five.png',
+            'six.png',
+        ];
+        aImg2[9].src='images/'+arr[w];
+        var str3=todou(d);
+        for (var i = 8; i < 10; i++) {
+            aImg1[i].src='images/'+str3.charAt(i-8)+'.png';12
+        }
+        var str2=todou(moth+1);
+        for (var i = 5; i < 7; i++) {
+             aImg1[i].src='images/'+str2.charAt(i-5)+'.png';
+        }
+        var str1=''+y;
+        for (var i = 0; i < 4; i++) {
+            aImg1[i].src='images/'+str1.charAt(i)+'.png';
+        }
+        var str=todou(h)+todou(m)+todou(s);
+        for (var i = 0; i < 2; i++) {
+            aImg2[i].src='images/'+str.charAt(i)+'.png';
+        }
+        for (var i = 3; i < 5; i++) {
+            aImg2[i].src='images/'+str.charAt(i-1)+'.png';
+        }
+        for (var i = 6; i <8; i++) {
+           aImg2[i].src='images/'+str.charAt(i-2)+'.png';
+        }
+        
+    };
+    setInterval(clock,1000);
+    clock();
+};
+</script>
+</head>
+<body>
+<div id="clock" class="date">
+    <h2><img src="images/title.png" alt=""/></h2>
+    <div class="year" id="year">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/year.png" alt="year" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/month.png" alt="month" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/seven.png" alt="seven" />
+    </div>
+    <div class="time" id="time">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="pos2" src="images/week.png" alt="week" />
+        <img class="num2" src="images/one.png" alt="one" id="img"/>
+    </div>
+</div>
+
+</body>
+</html>

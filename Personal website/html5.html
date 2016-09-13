@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/common.css">
+<script src="js/move.js"></script>
+<style>
+body{
+	background: #936;
+}
+#div1{
+	margin-top: 50px;
+}
+#div2{
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+}
+a{display: block;
+position: absolute;}
+#ul1 {
+	width:1000px; 
+	height:510px; 
+	margin:20px auto;}
+#ul1 li {
+	position: relative;
+	width:300px; 
+	height:200px; 
+	float:left; 
+	margin:10px; 
+	position:relative; 
+	background:#CCC; 
+	overflow:hidden;
+	border: 3px solid #ccc;
+	text-align: center;
+	font-size: 40px;
+	color: #fff;}
+#ul1 li a {
+	position:absolute; 
+	left:-100%; 
+	top:0; 
+	color: #fff;
+	width:100%; 
+	height:100%; 
+	line-height: 200px;
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+span{
+	float: left;
+	opacity:0.7; filter:alpha(opacity:60);
+	background:#239; 
+	width:100%;
+	height: 100%;
+}
+i{
+	font-style: normal;
+	float: left;
+	position: absolute;
+	left:0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+}
+</style>
+<script>
+	function getStyle(obj, name){
+		return obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj, false)[name];
+	}
+	var pos={x: 0, y: 0};	//最后一次的鼠标位置
+
+	document.onmousemove=function (ev){
+		var oEvent=ev||event;
+		
+		pos.x=oEvent.clientX;
+		pos.y=oEvent.clientY;
+	};
+
+	function suibian(oDiv){
+		var oInnerDiv=oDiv.children[1];
+		
+		oDiv.onmouseenter=function (){
+			var dir=findDir();
+			
+			switch(dir){
+				case 't':
+					oInnerDiv.style.left='0';
+					oInnerDiv.style.top='-'+oInnerDiv.offsetHeight+'px';
+					
+					move(oInnerDiv, {left: 0, top: 0});
+					break;
+				case '左':
+					oInnerDiv.style.left='-'+oInnerDiv.offsetWidth+'px';
+					oInnerDiv.style.top='0';
+					
+					move(oInnerDiv, {left: 0, top: 0});
+					break;
+				case 3:
+					oInnerDiv.style.left='0';
+					oInnerDiv.style.top=oInnerDiv.offsetHeight+'px';
+					
+					move(oInnerDiv, {left: 0, top: 0});
+					break;
+				case document:
+					oInnerDiv.style.left=oInnerDiv.offsetWidth+'px';
+					oInnerDiv.style.top='0';
+					
+					move(oInnerDiv, {left: 0, top: 0});
+					break;
+			}
+		};
+		
+		function findDir(){
+			var x1=oDiv.offsetLeft+oDiv.offsetWidth/2;
+			var y1=oDiv.offsetTop+oDiv.offsetHeight/2;
+			
+			var x=x1-pos.x;
+			var y=y1-pos.y;
+			
+			var ang=Math.atan2(y, x)*180/Math.PI-90;
+			
+			if(ang>=-45 && ang<=45){
+				//上
+				return 't';
+			}else if(ang>=-135 && ang<=-45){
+				//左
+				return '左';
+			}else if(ang>=-225 && ang<=-135){
+				//下
+				return 3;
+			}else{
+				//右
+				return document;
+			}
+		}
+		
+		oDiv.onmouseleave=function (){
+			var dir=findDir();
+			
+			switch(dir){
+				case 't':
+					move(oInnerDiv, {left: 0, top: -oInnerDiv.offsetHeight});
+					break;
+				case '左':
+					move(oInnerDiv, {left: -oInnerDiv.offsetWidth, top: 0});
+					break;
+				case 3:
+					move(oInnerDiv, {left: 0, top: oInnerDiv.offsetHeight});
+					break;
+				case document:
+					move(oInnerDiv, {left: oInnerDiv.offsetWidth, top: 0});
+					break;
+			}
+		};
+	}
+
+	window.onload=function (){
+		var aLi=document.getElementById('ul1').children;
+		var oDiv=document.getElementById('ul1');
+		var oInnerDiv=oDiv.children[1];
+		for(var i=0;i<aLi.length;i++){
+			suibian(aLi[i]);
+		}
+	};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div id="div2">HTML5&&CSS3</div>
+	<ul id="ul1">
+<li><img src="img/h51.png" alt=""><a href="3dCube.html"><span></span><i>3D立方体</i></a></li>
+<li><img src="img/h52.png" alt=""><a href="3d-rotateEffect.html"><span></span><i>3D旋转</i></a></li>
+<li><img src="img/h53.png" alt=""><a href="Blockmotion3d.html"><span></span><i>3D分块</i></a></li>
+<li><img src="img/h54.png" alt=""><a href="clock.html"><span></span><i>时钟</i></a></li>
+<li><img src="img/h55.png" alt=""><a href="Screensaver.html"><span></span><i>屏保</i></a></li>
+<li><img src="img/h56.png" alt=""><a href="video.html"><span></span><i>视频播放</i></a></li>
+	</ul>
+</div>
+</body>
+</html>

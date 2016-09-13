@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uc9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 微软雅黑;
+            background: #379
+        }
+
+        #div1 {
+            width: 300px;
+            height: 150px;
+            line-height: 150px;
+            font-size: 50px;
+            background: red;
+            position: absolute;
+            left: 0;
+            color: #fff;
+            top: 30px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var oDiv=document.getElementById('div1');
+            var speedX=8;
+            var speedY=6;
+            setInterval(function(){
+
+                var l=oDiv.offsetLeft+speedX;
+                var t=oDiv.offsetTop+speedY;
+                if(t>document.documentElement.clientHeight-oDiv.offsetHeight){
+                    t=document.documentElement.clientHeight-oDiv.offsetHeight
+                    speedY=-1*8;//反向
+                }else if(t<0){
+                    t=0;//限定
+                    speedY=1*8;//反向
+                }
+                if(l>document.documentElement.clientWidth-oDiv.offsetWidth){
+                    l=document.documentElement.clientWidth-oDiv.offsetWidth;
+                    speedX=-1*6;//反向
+                }else if(l<0){
+                    l=0//限定
+                    speedX=1*6;//反向
+                }
+                oDiv.style.left=l+'px';
+                oDiv.style.top=t+'px';
+            },30);
+        };
+    </script>
+</head>
+<body>
+
+<div id="div1">悬浮广告</div>
+
+</body>
+</html>

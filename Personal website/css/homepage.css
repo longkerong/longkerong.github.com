@@ -1,0 +1,298 @@
+body{
+	background:#479;
+	position:relative;
+}
+.container{
+	height:800px;
+	background:url(../img/sybj15.png) no-repeat;
+	background-size: 100% 100%;
+	// background:#629;
+}
+.headnav{
+	position:relative;
+}
+.headnav,.headnav li{
+	float: right;
+	margin-top: 10px;
+	margin-right: 3px;
+	color:#fff;
+	line-height:50px;
+}
+.xiangp{
+	left:50%;
+	top:-100px;
+	margin-left:-90px;
+	width:180px;
+	height:180px;
+	border-radius:50%;
+	background:url(../img/by.jpg) no-repeat;
+	background-size:100% 100%;
+	position:absolute;
+}
+.logou{
+	float:left;
+}
+.headnav li{
+	float:left;
+}
+.box{
+	width:133px;
+	height:50px;
+	background: #fff;
+	position:absolute;
+	left:0px;
+	opacity: 0.5;
+	border-radius: 3px;
+	transform:perspective(800px) rotateX(-30deg);
+}
+.headnav li a{
+	position:relative;
+	text-align:center;
+	font-size: 18px;
+	color: #fff;
+	display: block;
+	text-align: center;
+	font-family: '宋体';
+	font-weight: bold;
+	line-height: 50px;
+	width:133px;
+	z-index: 1;
+}
+.title{
+	left:30px;
+	top:-300px;
+	opacity:0;
+	text-align:center;
+	width:325px;
+	margin:90px auto;
+	position:absolute;
+	color:#fff;
+	font-size:50px;
+}
+.content{
+	position:relative;
+	margin-top:155px;
+}
+.content span a{
+	display:block;
+	color:#fff;
+	
+}
+.content .zuop{
+	position:relative;
+	text-align:center;
+	border:2px solid #ccc;
+	width:120px;
+	line-height:40px;
+	font-size:25px;
+	margin-left: 350px;
+	color:#fff;
+}
+.content .jies{
+	position:relative;
+	text-align:center;
+	border:2px solid #ccc;
+	width:120px;
+	line-height:40px;
+	font-size:25px;
+	margin-right: 350px;
+}
+#i1{
+	position:absolute;
+	top: -2px;
+	opacity:0;
+	left: -230px;
+	width:122px;
+	height:2px;
+	background:#fff;
+}
+#i2{
+	opacity:0;
+	position:absolute;
+	left:300px;
+	width:124px;
+	height:2px;
+	background:#fff;
+}
+#i3{
+	position:absolute;
+	left:-2px;
+	height:43px;
+	top:200px;
+	width:2px;
+	opacity:0;
+	background:#fff;
+}
+#i4{
+	opacity:0;
+	position:absolute;
+	left:120px;
+	height:43px;
+	top:-200px;
+	width:2px;
+	background:#fff;
+}
+#b1{
+	position:absolute;
+	top: -2px;
+	opacity:0;
+	left: -230px;
+	width:122px;
+	height:2px;
+	background:#fff;
+}
+#b2{
+	opacity:0;
+	position:absolute;
+	left:200px;
+	width:124px;
+	height:2px;
+	background:#fff;
+}
+#b3{
+	position:absolute;
+	left:-2px;
+	height:43px;
+	top:200px;
+	width:2px;
+	opacity:0;
+	background:#fff;
+}
+#b4{
+	opacity:0;
+	position:absolute;
+	left:120px;
+	height:43px;
+	top:-200px;
+	width:2px;
+	background:#fff;
+}
+#skill{
+	color:#fff;
+	font-size:35px;
+	text-align:center;
+	margin-top:-60px;
+	margin-bottom:40px;
+}
+.content1{
+	margin-top:150px;
+}
+#ol1{
+	width:1310px;
+	margin:-30px auto;
+	margin-left:-20px
+}
+#ol1 li{
+	position:relative;
+	overflow: hidden;
+	border: 2px solid #ccc;
+	width:310px;
+	height:250px;
+	margin:6px;
+}
+#ol1 li img{
+	width:100%;
+	height:100%;
+}
+#ol1 li .span1{
+	position:absolute;
+	top:180px;
+	width:310px;
+	height:250px;
+	width:100%;
+	height:100%;
+}
+#ol1 li .span2{
+	background:#000;
+	opacity:0.5;
+	position:absolute;
+	top:0px;
+	width:310px;
+	height:250px;
+	width:100%;
+	height:100%;
+}
+#ol1 li .span3{
+	position:absolute;
+	top:0px;
+	color:#fff;
+	width:310px;
+	height:250px;
+	width:100%;
+	height:100%;
+}
+.span3 b{
+	font-size:45px;
+	display:block;
+	text-align:center;
+	margin-top: 5px;
+	margin-bottom: 50px;
+}
+.span3 i{
+	margin-top:20px;
+	font-size:20px;
+	display:block;
+	font-style: normal;
+}
+.grjs{
+	width:100%;
+}
+.footer{
+	background:#234;
+	width:100%;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:30px;
+	color:#fff;
+	position:absolute;
+	bottom: 0px;
+	bottom:0;
+}
+.Contact{
+	background:url(../img/sybj11.png) no-repeat;
+	background-size:100% 100%;
+	width:100%;
+	height:800px;
+	overflow:hidden;
+	opacity:0;
+	// margin-top: -30px;
+}
+.Contact h3{
+	font-size:50px;
+	text-align:center;
+	font-weight:bold;
+	color:#fff;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+i{
+	font-style:normal;
+}
+.information dl{
+	margin-left:170px;
+	width:500px;
+}
+.information dl dt{
+	color:#fff;
+	font-size:30px;
+	font-weight:bold;
+	margin-bottom:40px;
+}
+.information dl dd{
+	overflow:hidden;
+	font-size:25px;
+	color:#fff;
+	margin-bottom: 30px;
+}
+.information dl dd span{
+	width:280px;
+}
+#container{
+	background: url(../img/map.png) no-repeat;
+	background-size:100% 100%;
+	width:600px;
+	height:500px;
+	margin-right:60px;
+	border:3px solid #ccc;
+}
