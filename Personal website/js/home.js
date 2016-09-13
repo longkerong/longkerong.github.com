@@ -101,11 +101,11 @@ window.onscroll=window.onload=function(){
 	
 	// //map.addControl(new BMap.OverviewMapControl()); 
 	// map.addControl(new BMap.ScaleControl());   // 初始化地图，设置中心点坐标和地图级别 1-20  
-	// var clienTh=document.documentElement.clientHeight;
-	// var oContact=document.getElementById('Contact');
-	// var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-	// var h=document.getElementById('Contact').offsetTop;
-	// console.log(scrollTop)
+	var clienTh=document.documentElement.clientHeight;
+	var oContact=document.getElementById('Contact');
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	var h=document.getElementById('Contact').offsetTop;
+	console.log(scrollTop)
 	if (scrollTop>250) {
 		oContact.className='Contact animated fadeInLeftBig'
 	}
