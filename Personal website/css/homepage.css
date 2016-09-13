@@ -1,12 +1,13 @@
 body{
 	background:#479;
 	position:relative;
+	background:url(../img/sybj8.png) no-repeat;
+	background-size: 100% 100%;
 }
 .container{
 	height:800px;
 	background:url(../img/sybj15.png) no-repeat;
 	background-size: 100% 100%;
-	// background:#629;
 }
 .headnav{
 	position:relative;
