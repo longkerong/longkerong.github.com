@@ -105,7 +105,6 @@ window.onscroll=window.onload=function(){
 	var oContact=document.getElementById('Contact');
 	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
 	var h=document.getElementById('Contact').offsetTop;
-	console.log(scrollTop)
 	if (scrollTop>250) {
 		oContact.className='Contact animated fadeInLeftBig'
 	}
