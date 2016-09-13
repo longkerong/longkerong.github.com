@@ -92,20 +92,20 @@ window.onscroll=window.onload=function(){
 			};
 		})(i)
 	}
-	var map = new BMap.Map("container");         // 创建地图实例  
-	var point = new BMap.Point(121.4571, 31.1454);  // 创建点坐标  
-	map.centerAndZoom(point, 15);
+	// var map = new BMap.Map("container");         // 创建地图实例  
+	// var point = new BMap.Point(121.4571, 31.1454);  // 创建点坐标  
+	// map.centerAndZoom(point, 15);
 	
-	var opts = {type: BMAP_NAVIGATION_CONTROL_LARGE}    
-	map.addControl(new BMap.NavigationControl(opts));
+	// var opts = {type: BMAP_NAVIGATION_CONTROL_LARGE}    
+	// map.addControl(new BMap.NavigationControl(opts));
 	
-	//map.addControl(new BMap.OverviewMapControl()); 
-	map.addControl(new BMap.ScaleControl());   // 初始化地图，设置中心点坐标和地图级别 1-20  
-	var clienTh=document.documentElement.clientHeight;
-	var oContact=document.getElementById('Contact');
-	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-	var h=document.getElementById('Contact').offsetTop;
-	console.log(scrollTop)
+	// //map.addControl(new BMap.OverviewMapControl()); 
+	// map.addControl(new BMap.ScaleControl());   // 初始化地图，设置中心点坐标和地图级别 1-20  
+	// var clienTh=document.documentElement.clientHeight;
+	// var oContact=document.getElementById('Contact');
+	// var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	// var h=document.getElementById('Contact').offsetTop;
+	// console.log(scrollTop)
 	if (scrollTop>250) {
 		oContact.className='Contact animated fadeInLeftBig'
 	}
