@@ -81,7 +81,7 @@ window.onscroll=window.onload=function(){
 		oB4.style.transform='translateY(70px)';
 	};
 	var aLi=document.getElementById('ol1').children;
-	var oSpan=document.querySelectorAll('.span1');
+	var oSpan=document.getElementsByClassName('span1');
 	for (var i = 0; i < aLi.length; i++) {
 		(function(index){
 			aLi[i].onmouseenter=function(){
@@ -92,15 +92,6 @@ window.onscroll=window.onload=function(){
 			};
 		})(i)
 	}
-	// var map = new BMap.Map("container");         // 创建地图实例  
-	// var point = new BMap.Point(121.4571, 31.1454);  // 创建点坐标  
-	// map.centerAndZoom(point, 15);
-	
-	// var opts = {type: BMAP_NAVIGATION_CONTROL_LARGE}    
-	// map.addControl(new BMap.NavigationControl(opts));
-	
-	// //map.addControl(new BMap.OverviewMapControl()); 
-	// map.addControl(new BMap.ScaleControl());   // 初始化地图，设置中心点坐标和地图级别 1-20  
 	var clienTh=document.documentElement.clientHeight;
 	var oContact=document.getElementById('Contact');
 	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
