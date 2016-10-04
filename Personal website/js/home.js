@@ -80,8 +80,26 @@ window.onscroll=window.onload=function(){
 		oB3.style.transform='translateY(50px)';
 		oB4.style.transform='translateY(70px)';
 	};
+	function getByClass(oParent,sClass){
+		var arr=[];
+		if(oParent.getElementsByClassName){
+			arr=oParent.getElementsByClassName(sClass);
+		}else{
+			var aEl=oParent.getElementsByTagName('*');
+			for(var i=0; i<aEl.length; i++){
+				var arr1=aEl[i].className.split(' ');
+				for(var j=0; j<arr1.length; j++){
+					if(arr1[j]==sClass){
+						arr.push(aEl[i]);
+					}
+				}
+			}
+		}
+		return arr;
+	}
 	var aLi=document.getElementById('ol1').children;
-	var oSpan=document.getElementsByClassName('span1');
+	var body=document.body;
+	var oSpan=getByClass(body,'span1');
 	for (var i = 0; i < aLi.length; i++) {
 		(function(index){
 			aLi[i].onmouseenter=function(){
