@@ -43,6 +43,7 @@ body{
 	position:absolute;
 	left:0px;
 	opacity: 0.5;
+	filter:alpha(opacity:50);
 	border-radius: 3px;
 	transform:perspective(800px) rotateX(-30deg);
 }
@@ -63,6 +64,7 @@ body{
 	left:30px;
 	top:-300px;
 	opacity:0;
+	filter:alpha(opacity:0);
 	text-align:center;
 	width:325px;
 	margin:90px auto;
@@ -102,6 +104,7 @@ body{
 	position:absolute;
 	top: -2px;
 	opacity:0;
+	filter:alpha(opacity:0);
 	left: -230px;
 	width:122px;
 	height:2px;
@@ -109,6 +112,7 @@ body{
 }
 #i2{
 	opacity:0;
+	filter:alpha(opacity:0);
 	position:absolute;
 	left:300px;
 	width:124px;
@@ -122,10 +126,12 @@ body{
 	top:200px;
 	width:2px;
 	opacity:0;
+	filter:alpha(opacity:0);
 	background:#fff;
 }
 #i4{
 	opacity:0;
+	filter:alpha(opacity:0);
 	position:absolute;
 	left:120px;
 	height:43px;
@@ -137,6 +143,7 @@ body{
 	position:absolute;
 	top: -2px;
 	opacity:0;
+	filter:alpha(opacity:0);
 	left: -230px;
 	width:122px;
 	height:2px;
@@ -144,6 +151,7 @@ body{
 }
 #b2{
 	opacity:0;
+	filter:alpha(opacity:0);
 	position:absolute;
 	left:200px;
 	width:124px;
@@ -157,10 +165,12 @@ body{
 	top:200px;
 	width:2px;
 	opacity:0;
+	filter:alpha(opacity:0);
 	background:#fff;
 }
 #b4{
 	opacity:0;
+	filter:alpha(opacity:0);
 	position:absolute;
 	left:120px;
 	height:43px;
@@ -206,6 +216,7 @@ body{
 #ol1 li .span2{
 	background:#000;
 	opacity:0.5;
+	filter:alpha(opacity:50);
 	position:absolute;
 	top:0px;
 	width:310px;
@@ -257,7 +268,7 @@ body{
 	height:800px;
 	overflow:hidden;
 	opacity:0;
-	// margin-top: -30px;
+	filter:alpha(opacity:0);
 }
 .Contact h3{
 	font-size:50px;

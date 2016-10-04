@@ -102,10 +102,10 @@ window.onscroll=window.onload=function(){
 	var oSpan=getByClass(body,'span1');
 	for (var i = 0; i < aLi.length; i++) {
 		(function(index){
-			aLi[i].onmouseenter=function(){
+			aLi[i].onmouseover=function(){
 				move(oSpan[index],{top:0},{duration:500})
 			};
-			aLi[i].onmouseleave=function(){
+			aLi[i].onmouseout=function(){
 				move(oSpan[index],{top:180},{duration:500})
 			};
 		})(i)
