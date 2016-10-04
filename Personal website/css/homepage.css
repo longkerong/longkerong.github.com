@@ -213,6 +213,7 @@ body{
 #ol1 li .span1{
 	position:absolute;
 	top:180px;
+	left:0px;
 	z-index:678;
 	width:310px;
 	height:250px;
