@@ -205,9 +205,15 @@ body{
 	width:100%;
 	height:100%;
 }
+#ol1 li a{
+	display:block;
+	width:100%;
+	height:100%;
+}
 #ol1 li .span1{
 	position:absolute;
 	top:180px;
+	z-index:678;
 	width:310px;
 	height:250px;
 	width:100%;
