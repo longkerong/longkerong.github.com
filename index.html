@@ -1,105 +1,143 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>个人站</title>
-<link rel="stylesheet" href="Personal website/css/jquery.fullPage.min.css">
-<style>
-* { margin: 0; padding: 0;}
-ul { list-style-type: none;}
-.top { position: fixed; left: 0; right: 0; top: 0; z-index: 999; height: 50px; background-color: rgba(0, 0, 0, 0.6);}
-.menu { width: 1000px; margin: 0 auto; overflow: hidden;}
-.logo { float: left; margin-top: 9px;}
-.logo a { display: inline;text-decoration:none;color: #fff; width: 32px; height: 32px; background-image: url(); background-size: 32px 32px;}
-.nav { float: right; margin-top: 10px; font-size: 0;}
-.nav li { display: inline-block; margin-left: 40px;}
-.nav a { display: inline-block; height: 30px; line-height: 30px; font-size: 20px; color: #fff; text-decoration: none;}
-.nav a:hover { color: #83c3f3;}
-.section { text-align: center; background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; overflow: hidden;}
-#section0 { background: #748}
-#section1 { background-image: url(images-14/1bg.jpg);}
-#section2 { background-image: url(images-14/2bg.jpg);}
-#section3 { background-image: url(images-14/3bg.jpg);}
-#section4 { background-image: url(images-14/4bg.jpg);}
-.title1 { opacity: 0.8; font-size: 60px; line-height: 93px; background: url(images-14/titleline1.png) no-repeat center bottom;color: #fff;}
-.title2 { opacity: 0.8; font-size: 40px; line-height: 75px;color: #fff;}
-.title3 { font-size: 24px; font-family: 'PingFang-SC-UltraLight', '微软雅黑', '宋体'; line-height: 48px; margin-top: 20px; opacity: 0.7;color: #fff;}
-#section1 .title1, #section1 .title2, #section2 .title1, #section2 .title2 { color: #fff; opacity: 1;}
-#section1 .title3, #section2 .title3 { color: #fff;}
-#section3 .title3 { color: #000;}
-#section1 .title1 { background: url(images-14/titleline2.png) no-repeat center bottom;}
-#section2 .title1 { background: url(images-14/titleline3.png) no-repeat center bottom;}
-#section3 .title1 { background: url(images-14/titleline4.png) no-repeat center bottom;color: #fff;}
-.mTxt1 { width: 526px; height: 195px; margin: 0 auto; position: relative; top: 25%; background: url(images-14/oneTxt.png) no-repeat 0 0;}
-.DownloadBtn { cursor: pointer; margin: 85px auto 0; width: 220px; height: 50px; position: relative; background: #5396FF; color: #fff; line-height: 50px; font-size: 24px; border-radius: 25px;}
-.DownloadBtn a { display: inline-block; width: 100%; height: 100%; color: #fff; font-family: 'PingFang-SC-UltraLight', '微软雅黑', '宋体';}
-.mTxt1 { width: 526px; height: 195px; margin: 0 auto; position: relative; top: 25%; background: url(images-14/oneTxt.png) no-repeat 0 0;}
-.DownloadBtn { cursor: pointer; margin: 85px auto 0; width: 220px; height: 50px; position: relative; background: #5396FF; color: #fff; line-height: 50px; font-size: 24px; border-radius: 25px;}
-.DownloadBtn a { display: inline-block; width: 100%; height: 100%; color: #fff; font-family: 'PingFang-SC-UltraLight', '微软雅黑', '宋体'; text-decoration: none;}
-#fp-nav ul li a span, .fp-slidesNav ul li a span { background-color: #fff;}
-</style>
-<script src="Personal website/js/jquery.min.js"></script>
-<script src="Personal website/js/jquery.fullPage.min.js"></script>
-<script>
-$(function() {
-$('#fullpage').fullpage({
-	navigation: true
-});
-});
-</script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="Personal website/css/common.css">
+	<link rel="stylesheet" href="Personal website/css/animate.css">
+	<link rel="stylesheet" href="Personal website/css/homepage.css">
+	<script src="Personal website/js/move.js"></script>
+	<script src="Personal website/js/home.js"></script>
 </head>
-
 <body>
-<div class="top">
-	<div class="menu">
-		<h1 class="logo"><a href="javascript:;">个人站</a></h1>
-		<ul class="nav">
-			<li><a href="index.html">首页</a></li>
-			<li><a href="Personal website/css.html" target="_blank">HTML&CSS</a></li>
-			<li><a href="Personal website/javascript.html" target="_blank">JAVASCRIPT</a></li>
-			<li><a href="Personal website/html5.html" target="_blank">HTML5&CSS3</a></li>
-			<li><a href="Personal website/Mobileterminal.html" target="_blank">移动端</a></li>
-		</ul>
+	<div class="container" >
+		<div class="head clearfix animated fadeInRightBig">
+			<h1 class="logou"></h1>
+			<ul class="headnav clearfix" id="headnav">
+				<li><a href="index.html">首页</a></li>
+				<li>|</li>
+				<li><a href="Personal website/css.html" target="_blank">CSS作品</a></li>
+				<li>|</li>
+				<li><a href="Personal website/javascript.html" target="_blank">JAVASCRIPT作品</a></li>
+				<li>|</li>
+				<li><a href="Personal website/html5.html">HTML5作品</a></li>
+				<li>|</li>
+				<li><a href="Personal website/Mobileterminal.html" target="_blank">移动端网页</a></li>
+				<li class="box"></li>
+			</ul>
+		</div>
+		<div class="content clearfix">
+			<div class="xiangp animated zoomIn"></div>
+			<span class="fl zuop animated fadeInDownBig" id="zuop">
+				<a href="Personal website/css.html" target="_blank">进入作品</a>
+				<i id="i1"></i>
+				<i id="i2"></i>
+				<i id="i3"></i>
+				<i id="i4"></i>
+			</span>
+			<span class="fr jies animated fadeInDownBig" id="jies">
+				<a href="Personal website/resume.doc" >个人简历</a>
+				<b id="b1"></b>
+				<b id="b2"></b>
+				<b id="b3"></b>
+				<b id="b4"></b>
+			</span>
+		</div>
+		<div class="content1">
+			<div id="skill" class="animated zoomIn">技能与作品</div>
+			<ol id="ol1" class="clearfix animated zoomIn">
+				<li class="fl">
+					<a href="Personal website/css.html" target="_blank"><img src="Personal website/img/sy1(1).jpg" alt="">
+						<span class="span1">
+							<span class="span2"></span>
+							<span class="span3">
+								<b>CSS&HTML</b>
+								<i>1.理解W3C标准并熟练运用</i>
+								<i>2.精通HTML&CSS布局</i>
+								<i>3.解决各个浏览器兼容问题</i>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li class="fl">
+					<a href="Personal website/javascript.html" target="_blank"><img src="Personal website/img/sy1(2).jpg" alt="">
+						<span class="span1">
+							<span class="span2"></span>
+							<span class="span3">
+								<b>JAVASCRIPT</b>
+								<i>1.熟练掌握原生JS以及JQUERY</i>
+								<i>2.熟练运用AJXS以及JSONP进行数据交互</i>
+								<i>3.熟练掌握面向对象思想</i>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li class="fl">
+					<a href="Personal website/html5.html" target="_blank"><img src="Personal website/img/sy1(3).jpg" alt="">
+						<span class="span1">
+							<span class="span2"></span>
+							<span class="span3">
+								<b>CSS3&HTML5</b>
+								<i>1.理解W3C标准并熟练运用</i>
+								<i>2.精通HTML&CSS布局</i>
+								<i>3.解决各个浏览器兼容问题</i>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li class="fl">
+					<a href="Personal website/Mobileterminal.html" target="_blank"><img src="Personal website/img/sy1(4).jpg" alt="">
+						<span class="span1">
+							<span class="span2"></span>
+							<span class="span3">
+								<b>移动端网站</b>
+								<i>1.熟练掌握原生JS以及ZETPO</i>
+								<i>2.精通自适应布局</i>
+								<i>3.掌握常用移动端框架</i>
+							</span>
+						</span>
+					</a>
+				</li>
+			</ol>
+		</div>
 	</div>
-</div>
-<div id="fullpage">
-	<div class="section" id="section0">
-		<div class="title1">超越梦想 相信奇迹</div>
-		<div class="title2">ABOUT ME</div>
-		<div class="title3">勤奋是学习的枝叶，当然很苦，智慧是学习的花朵，当然香郁
-			<br>不求做的最好，但求做的更好！</div>
-		<div class="DownloadBtn"><a href="Personal website/resume.doc" target="_blank">简历下载</a></div>
+	<div class="Contact" id="Contact">
+		<h3>ABOUT</h3>
+		<div class="clearfix information">
+			<dl class="fl">
+				<dt>PERSONAL CONTACT INFORMATION</dt>
+				<dd>
+					<span class="fl">姓名</span>
+					<i class="fl">龙克才</i>
+				</dd>
+				<dd>
+					<span class="fl">性别</span>
+					<i class="fl">男</i>
+				</dd>
+				<dd>
+					<span class="fl">出生日期</span>
+					<i class="fl">1989</i>
+				</dd>
+				<dd>
+					<span class="fl">地址</span>
+					<i class="fl">上海徐汇区</i>
+				</dd>
+				<dd>
+					<span class="fl">工作年限</span>
+					<i class="fl">5年</i>
+				</dd>
+				<dd>
+					<span class="fl">EMAIL</span>
+					<i class="fl">601989282@qq.com</i>
+				</dd>
+				<dd>
+					<span class="fl">TEL</span>
+					<i class="fl">18566521477</i>
+				</dd>
+			</dl>
+			<div id="container" class="fr"></div>
+		</div>
 	</div>
-	<div class="section" id="section1">
-		<div class="title1">CSS&HTML</div>
-		<div class="title2">理解W3C标准并熟练运用</div>
-		<div class="title2">精通HTML&CSS布局</div>
-		<div class="title2">解决各个浏览器兼容问题</div>
-		<div class="DownloadBtn"><a href="Personal website/css.html" target="_blank">进入作品</a></div>
-	</div>
-	<div class="section" id="section2">
-		<div class="title1">JAVASCRIPT</div>
-		<div class="title2">熟练掌握原生JS以及JQUERY</div>
-		<div class="title2">熟练运用AJXS以及JSONP进行数据交互</div>
-		<div class="title2">熟练掌握面向对象思想</div>
-		<div class="DownloadBtn"><a href="Personal website/javascript.html" target="_blank">进入作品</a></div>
-	</div>
-	<div class="section" id="section3">
-		<div class="title1">CSS3&HTML5</div>
-		<div class="title2">理解W3C标准并熟练运用</div>
-		<div class="title2">精通HTML&CSS布局</div>
-		<div class="title2">解决各个浏览器兼容问题</div>
-		<div class="DownloadBtn"><a href="Personal website/html5.html" target="_blank">进入作品</a></div>
-	</div>
-	<div class="section" id="section4">
-		<div class="title1">移动端</div>
-		<div class="title2">熟练掌握原生JS以及ZETPO</div>
-		<div class="title2">精通自适应布局</div>
-		<div class="title2">掌握常用移动端框架</div>
-		<div class="DownloadBtn"><a href="Personal website/Mobileterminal.html" target="_blank">进入作品</a></div>
-	</div>
-</div>
+	<div class="footer">CopyRight©2016  Kecai Long  ALL Right Reservde</div>
 </body>
-
 </html>
